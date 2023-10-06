@@ -5,8 +5,12 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 public class HitPoints {
-    public static Integer generate(int level, int dice, int conMod) {
+    public static Integer generateForLevel(int level, int dice, int conMod) {
         return hitpointsRoller(level, dice, conMod);
+    }
+
+    public static Integer randomizeHPOnce(int dice, int conMod) {
+        return generateForLevel(1, dice, conMod);
     }
 
     private static Integer hitpointsRoller(int level, int dice, int conMod) {
