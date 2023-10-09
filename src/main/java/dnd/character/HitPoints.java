@@ -1,4 +1,4 @@
-package dnd;
+package dnd.character;
 
 import java.util.List;
 import java.util.Random;
