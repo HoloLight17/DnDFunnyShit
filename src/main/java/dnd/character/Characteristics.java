@@ -1,13 +1,10 @@
-package dnd;
+package dnd.character;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
 
 public class Characteristics {
-    public static void generate() {
-        writeToFile(characteristicsRoller());
+    public static List<Integer> generate() {
+        return characteristicsRoller();
     }
 
     private static List<Integer> characteristicsRoller() {
@@ -20,12 +17,12 @@ public class Characteristics {
         return finalResult;
     }
 
-    private static void writeToFile(Object... ints) {
+/*    private static void writeToFile(Object... ints) {
         Path path = Paths.get("chars.txt");
         try {
             Files.write(path, Arrays.toString(ints).getBytes());
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    }*/
 }
