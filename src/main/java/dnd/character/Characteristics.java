@@ -1,7 +1,10 @@
 package dnd.character;
 
+import org.springframework.stereotype.Service;
+
 import java.util.*;
 
+@Service
 public class Characteristics {
     public static List<Integer> generate() {
         return characteristicsRoller();

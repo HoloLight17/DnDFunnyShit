@@ -1,12 +1,19 @@
 package dnd.character;
 
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
+@Service
 public class HitPoints {
     public static Integer generateForLevel(int level, int dice, int conMod) {
         return hitpointsRoller(level, dice, conMod);
+    }
+
+    public static Integer generateForLevel(int level, int dice) {
+        return hitpointsRoller(level, dice, 0);
     }
 
     public static Integer randomizeHPOnce(int dice, int conMod) {
