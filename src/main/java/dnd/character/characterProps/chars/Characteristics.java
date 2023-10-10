@@ -1,4 +1,4 @@
-package dnd.character;
+package dnd.character.characterProps.chars;
 
 import org.springframework.stereotype.Service;
 
@@ -19,13 +19,4 @@ public class Characteristics {
         }
         return finalResult;
     }
-
-/*    private static void writeToFile(Object... ints) {
-        Path path = Paths.get("chars.txt");
-        try {
-            Files.write(path, Arrays.toString(ints).getBytes());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }*/
 }

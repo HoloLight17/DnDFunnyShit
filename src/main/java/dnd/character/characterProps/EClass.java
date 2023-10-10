@@ -1,13 +1,12 @@
-package dnd.character;
+package dnd.character.characterProps;
 
-import dnd.Main;
 import lombok.Getter;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @Getter
-public enum Class {
+public enum EClass {
     ARTIFICER("Изобретатель"),
     BARD("Бард"),
     BARBARIAN("Варвар"),
@@ -22,21 +21,21 @@ public enum Class {
     WARLOCK("Колдун"),
     WIZARD("Волшебник");
 
-    private static final Map<String, Class> lookup = new HashMap<>();
+    private static final Map<String, EClass> lookup = new HashMap<>();
 
     static {
-        for (Class c : Class.values()) {
+        for (EClass c : EClass.values()) {
             lookup.put(c.getClassName(), c);
         }
     }
 
     private final String className;
 
-    Class(String className) {
+    EClass(String className) {
         this.className = className;
     }
 
-    public static Class get(String className) {
+    public static EClass get(String className) {
         return lookup.get(className);
     }
 

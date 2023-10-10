@@ -1,11 +1,10 @@
 package dnd;
 
-import dnd.character.Class;
-
-import java.util.Arrays;
+import dnd.character.CharacterCreator;
 
 public class Main {
     public static void main(String[] args) {
-        new Creator().GUIShow();
+        CharacterCreator character = new CharacterCreator();
+        character.createCharacter();
     }
 }

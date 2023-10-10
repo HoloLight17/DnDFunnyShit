@@ -1,15 +1,15 @@
-package dnd;
+package dnd.UIs;
 
-import dnd.character.Class;
-import dnd.character.HitPoints;
+import dnd.character.CharacterCreator;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Creator {
-    private final SendActionListener listener = new SendActionListener();
+public class CreatorUI {
+    private final SendActionListener sendActionListener = new SendActionListener();
     private final JFrame frame = new JFrame("DnDFunnyShit");
+    private final CharacterCreator character;
     private JComboBox<String> classNames;
     private JPanel panel1;
     private JButton sendButton;
@@ -17,21 +17,23 @@ public class Creator {
     private String className;
     private Integer level;
 
-    Creator() {
+    public CreatorUI(CharacterCreator characterCreator) {
+        this.character = characterCreator;
         frame.setContentPane(panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
+        sendButton.addActionListener(sendActionListener);
     }
 
     public void GUIShow() {
         frame.setVisible(true);
         frame.setResizable(false);
-        sendButton.addActionListener(listener);
     }
 
     private void send() {
         frame.dispose();
-        System.out.println(HitPoints.generateForLevel(level, Class.get(className).hitDices()));
+        character.setClassName(className);
+        character.setLevel(level);
     }
 
     private class SendActionListener implements ActionListener {

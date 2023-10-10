@@ -1,4 +1,4 @@
-package dnd.character;
+package dnd.character.characterProps;
 
 import org.springframework.stereotype.Service;
 
