@@ -54,7 +54,7 @@ public class CharacteristicsUI {
     private class SendActionListener1 implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (cnt > 5) {
+            if (cnt >= 5) {
                 frame.dispose();
                 sendToList(rawList);
             } else {
