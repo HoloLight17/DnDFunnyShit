@@ -22,7 +22,6 @@ public class HitPoints {
 
     private static Integer hitpointsRoller(int level, int dice, int conMod) {
         List<Integer> hits = new Random().ints(level - 1, 2, dice + 1).boxed().collect(Collectors.toList());
-        System.out.println(hits);
         return hits.stream().mapToInt(Integer::intValue).sum() + dice + conMod * level;
     }
 }

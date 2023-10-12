@@ -1,6 +1,5 @@
 package dnd.character;
 
-import dnd.UIs.CharacteristicsUI;
 import dnd.UIs.CreatorUI;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,22 +15,23 @@ public class CharacterCreator {
     private int HP = 0;
 
     public void createCharacter() {
-        getClassAndLevel();
-        getCharsList();
+        getClassLevelChars();
     }
 
-    private void getClassAndLevel() {
+    private void getClassLevelChars() {
         new CreatorUI(this).GUIShow();
-    }
-
-    private void getCharsList() {
-        new CharacteristicsUI(this).getGUI();
     }
 
     @Override
     public String toString() {
         return "Level: " + level +
-                "Class: " + className +
-                "HP: " + HP;
+                "\nClass: " + className +
+                "\nHP: " + HP +
+                "\n\tSTR: " + chars.get(0) +
+                "\tDEX: " + chars.get(1) +
+                "\tCON: " + chars.get(2) +
+                "\tINT: " + chars.get(3) +
+                "\tWIS: " + chars.get(4) +
+                "\tCHA: " + chars.get(5);
     }
 }
