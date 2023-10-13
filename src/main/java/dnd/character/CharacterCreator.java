@@ -9,6 +9,7 @@ import java.util.List;
 @Getter
 @Setter
 public class CharacterCreator {
+    //TODO: Entity
     private String className = null;
     private int level = 1;
     private List<Integer> chars = null;
