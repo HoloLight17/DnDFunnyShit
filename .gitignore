@@ -37,3 +37,5 @@ build/
 ### Mac OS ###
 .DS_Store
 /chars.txt
+/table.txt
+/sorted_table.txt
