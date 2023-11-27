@@ -1,9 +1,7 @@
 package dnd;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Stream;
 
 public class Main {
@@ -36,19 +34,22 @@ public class Main {
             System.out.println(e.getMessage());
         }*/
         File sortedFile = new File("ul_li_sorted.txt");
-        if (sortedFile.exists()) {
-            sortedFile.delete();
-        }
-        List<String> lines = new ArrayList<>();
+        if (sortedFile.exists()) sortedFile.delete();
         try (BufferedReader br = new BufferedReader(new FileReader("ul_li.txt"));
              BufferedWriter bw = new BufferedWriter(new FileWriter(sortedFile, true))) {
-            String string = br.readLine();
-            List<String> list = Arrays.stream(string.split("\\\\t")).sorted().toList();
-            String ul = list.get(0);
-            List<String> li = list.subList(1, list.size()).stream().sorted().toList();
-            System.out.println(ul);
-            for (String item : li) {
-                System.out.println("\t" + item);
+            Map<String, List<String>> uls = new HashMap<>();
+            String string;
+            while ((string = br.readLine()) != null) {
+                List<String> list = Arrays.stream(string.split("\\\\t")).toList();
+                uls.put(list.get(0), list.subList(1, list.size()));
+            }
+            for (String ul : uls.keySet().stream().sorted().toList()) {
+                bw.write(ul);
+                for (String line : uls.get(ul)) {
+                    bw.newLine();
+                    bw.write("\t" + line);
+                }
+                bw.newLine();
             }
             bw.flush();
         } catch (IOException e) {
