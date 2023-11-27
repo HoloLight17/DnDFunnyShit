@@ -2,16 +2,13 @@ package dnd;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
-//        System.out.println(Characteristics.generate());
-//        System.out.println(HitPoints.generate(7, 8));
-//        System.out.println(HitPoints.randomizeHPOnce(8, 2));
-        File sortedFile = new File("sorted_table.txt");
+/*        File sortedFile = new File("sorted_table.txt");
         if (sortedFile.exists()) {
             sortedFile.delete();
         }
@@ -33,6 +30,25 @@ public class Main {
             for (Integer index : sortedTable.keySet()) {
                 bw.append("|").append(String.valueOf(index)).append("|").append(sortedTable.get(index)).append("|");
                 bw.newLine();
+            }
+            bw.flush();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }*/
+        File sortedFile = new File("ul_li_sorted.txt");
+        if (sortedFile.exists()) {
+            sortedFile.delete();
+        }
+        List<String> lines = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader("ul_li.txt"));
+             BufferedWriter bw = new BufferedWriter(new FileWriter(sortedFile, true))) {
+            String string = br.readLine();
+            List<String> list = Arrays.stream(string.split("\\\\t")).sorted().toList();
+            String ul = list.get(0);
+            List<String> li = list.subList(1, list.size()).stream().sorted().toList();
+            System.out.println(ul);
+            for (String item : li) {
+                System.out.println("\t" + item);
             }
             bw.flush();
         } catch (IOException e) {
