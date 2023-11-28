@@ -36,7 +36,5 @@ build/
 
 ### Mac OS ###
 .DS_Store
-/chars.txt
-/table.txt
-/sorted_table.txt
-/ul_li.txt
+
+### Files ###
