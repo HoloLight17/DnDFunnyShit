@@ -21,6 +21,7 @@ public class Main {
                 if (string.split("    ").length == 1) {
                     ul = string;
                     lisBuilder = new StringBuilder();
+                    listOfAll.put(ul, "");
                 } else {
                     String lis = lisBuilder.append(string.split("    ")[1]).append(", ").toString();
                     listOfAll.put(ul, lis);
@@ -28,23 +29,31 @@ public class Main {
             }
             if (sortAll) {
                 for (String key : listOfAll.keySet().stream().sorted().toList()) {
-                    bw.write(key + ": ");
-                    bw.newLine();
-                    for (String elem :
-                            Arrays.stream(listOfAll.get(key).split(", ")).sorted().toList()) {
-                        bw.write("\t" + elem);
+                    if (!listOfAll.get(key).isEmpty()) {
+                        bw.write(key + ": ");
                         bw.newLine();
+                        for (String elem :
+                                Arrays.stream(listOfAll.get(key).split(", ")).sorted().toList()) {
+                            bw.write("\t" + elem);
+                            bw.newLine();
+                        }
                     }
+                    bw.write(key);
+                    bw.newLine();
                 }
             } else {
                 for (String key : listOfAll.keySet().stream().sorted().toList()) {
-                    bw.write(key + ": ");
-                    bw.newLine();
-                    for (String elem :
-                            listOfAll.get(key).split(", ")) {
-                        bw.write("\t" + elem);
+                    if (!listOfAll.get(key).isEmpty()) {
+                        bw.write(key + ": ");
                         bw.newLine();
+                        for (String elem :
+                                listOfAll.get(key).split(", ")) {
+                            bw.write("\t" + elem);
+                            bw.newLine();
+                        }
                     }
+                    bw.write(key);
+                    bw.newLine();
                 }
             }
             bw.flush();
