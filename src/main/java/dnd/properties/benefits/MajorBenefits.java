@@ -5,8 +5,7 @@ import dnd.properties.Properties;
 import java.util.Random;
 
 public class MajorBenefits extends Properties {
-    @Override
-    public String generateProperty() {
+    public static String generateProperty() {
         int value = new Random().nextInt(1, 101);
         if (between(value, 1, 20)) {
             return "Пока вы настроены на артефакт, одна из ваших характеристик (на выбор Мастера) увеличивается на 2, с максимумом 24";
