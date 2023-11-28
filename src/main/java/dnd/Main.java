@@ -38,9 +38,10 @@ public class Main {
                             bw.write("\t" + elem);
                             bw.newLine();
                         }
+                    } else {
+                        bw.write(key);
+                        bw.newLine();
                     }
-                    bw.write(key);
-                    bw.newLine();
                 }
             } else {
                 for (String key : listOfAll.keySet().stream().sorted().toList()) {
@@ -52,9 +53,10 @@ public class Main {
                             bw.write("\t" + elem);
                             bw.newLine();
                         }
+                    } else {
+                        bw.write(key);
+                        bw.newLine();
                     }
-                    bw.write(key);
-                    bw.newLine();
                 }
             }
             bw.flush();
