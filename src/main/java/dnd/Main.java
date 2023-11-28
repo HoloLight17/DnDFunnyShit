@@ -9,7 +9,7 @@ public class Main {
     }
 
     public static void sortMdList(boolean sortAll) {
-        File sortedFile = new File("src/main/resources/ul_li_sorted.txt");
+        File sortedFile = new File("ul_li_sorted.txt");
         if (sortedFile.exists()) sortedFile.delete();
         try (BufferedReader br = new BufferedReader(new FileReader("ul_li.txt"));
              BufferedWriter bw = new BufferedWriter(new FileWriter(sortedFile, true))) {
@@ -54,7 +54,7 @@ public class Main {
     }
 
     public static void sortMdTable() {
-        File sortedFile = new File("src/main/resources/sorted_table.txt");
+        File sortedFile = new File("sorted_table.txt");
         if (sortedFile.exists()) sortedFile.delete();
         List<Integer> indexes = new ArrayList<>();
         List<String> values = new ArrayList<>();
