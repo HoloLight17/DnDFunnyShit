@@ -6,12 +6,13 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         sortMdList(true);
+        sortMdTable();
     }
 
     public static void sortMdList(boolean sortAll) {
-        File sortedFile = new File("ul_li_sorted.txt");
+        File sortedFile = new File("ul_li_sorted.md");
         if (sortedFile.exists()) sortedFile.delete();
-        try (BufferedReader br = new BufferedReader(new FileReader("ul_li.txt"));
+        try (BufferedReader br = new BufferedReader(new FileReader("ul_li.md"));
              BufferedWriter bw = new BufferedWriter(new FileWriter(sortedFile, true))) {
             Map<String, String> listOfAll = new HashMap<>();
             String ul = "";
@@ -63,16 +64,20 @@ public class Main {
     }
 
     public static void sortMdTable() {
-        File sortedFile = new File("sorted_table.txt");
+        File sortedFile = new File("sorted_table.md");
         if (sortedFile.exists()) sortedFile.delete();
         List<Integer> indexes = new ArrayList<>();
         List<String> values = new ArrayList<>();
         Map<Integer, String> sortedTable = new TreeMap<>();
-        try (BufferedReader br = new BufferedReader(new FileReader("table.txt")); BufferedWriter bw = new BufferedWriter(new FileWriter(sortedFile, true))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("table.md")); BufferedWriter bw = new BufferedWriter(new FileWriter(sortedFile, true))) {
+            bw.write(br.readLine());
+            bw.newLine();
+            bw.write(br.readLine());
+            bw.newLine();
             for (String line = br.readLine(); line != null; line = br.readLine()) {
                 String[] splitLine = line.split("\\|");
-                indexes.add(Integer.valueOf(splitLine[1]));
-                values.add(splitLine[2]);
+                indexes.add(Integer.valueOf(splitLine[1].trim()));
+                values.add(splitLine[2].trim());
             }
             values = values.stream().sorted().toList();
             for (int i = 0; i < indexes.size(); ) {
