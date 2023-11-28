@@ -5,10 +5,10 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        sortList();
+        sortMdList();
     }
 
-    public static void sortList() {
+    public static void sortMdList() {
         File sortedFile = new File("src/main/resources/ul_li_sorted.txt");
         if (sortedFile.exists()) sortedFile.delete();
         try (BufferedReader br = new BufferedReader(new FileReader("ul_li.txt"));
@@ -41,7 +41,7 @@ public class Main {
         }
     }
 
-    public static void sortTable() {
+    public static void sortMdTable() {
         File sortedFile = new File("src/main/resources/sorted_table.txt");
         if (sortedFile.exists()) sortedFile.delete();
         List<Integer> indexes = new ArrayList<>();
