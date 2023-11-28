@@ -5,10 +5,10 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        sortMdList();
+        sortMdList(true);
     }
 
-    public static void sortMdList() {
+    public static void sortMdList(boolean sortAll) {
         File sortedFile = new File("src/main/resources/ul_li_sorted.txt");
         if (sortedFile.exists()) sortedFile.delete();
         try (BufferedReader br = new BufferedReader(new FileReader("ul_li.txt"));
@@ -26,13 +26,25 @@ public class Main {
                     listOfAll.put(ul, lis);
                 }
             }
-            for (String key : listOfAll.keySet().stream().sorted().toList()) {
-                bw.write(key + ": ");
-                bw.newLine();
-                for (String elem :
-                        listOfAll.get(key).split(", ")) {
-                    bw.write("\t" + elem);
+            if (sortAll) {
+                for (String key : listOfAll.keySet().stream().sorted().toList()) {
+                    bw.write(key + ": ");
                     bw.newLine();
+                    for (String elem :
+                            Arrays.stream(listOfAll.get(key).split(", ")).sorted().toList()) {
+                        bw.write("\t" + elem);
+                        bw.newLine();
+                    }
+                }
+            } else {
+                for (String key : listOfAll.keySet().stream().sorted().toList()) {
+                    bw.write(key + ": ");
+                    bw.newLine();
+                    for (String elem :
+                            listOfAll.get(key).split(", ")) {
+                        bw.write("\t" + elem);
+                        bw.newLine();
+                    }
                 }
             }
             bw.flush();
