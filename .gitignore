@@ -39,6 +39,7 @@ build/
 
 ### Files ###
 /chars.txt
-/table.txt
-/sorted_table.txt
-/ul_li.txt
+/table.md
+/sorted_table.md
+/ul_li.md
+/ul_li_sorted.md
